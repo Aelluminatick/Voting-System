@@ -74,7 +74,7 @@ else $rec = 1;
       echo "<tr><td align = right>Select to Update  :  $sel ";
       echo "
 	            <input type = submit  value = 'Update' name = cmd>
-				
+				<input type = submit  value = 'Insert' name = cmd>
 				
 				</table></form>";
 
@@ -92,8 +92,6 @@ else $rec = 1;
 	     $result =  mysqli_query($link, $sql);
 	     if ($result) {
 		     $row = mysqli_fetch_array($result);
-			 $data = $row;
-			 $input = $_POST['number'];
 			 $idNo = $row['idNo'] ;
 			   $name = $row['name'] ;
 			   $party = $row['party'] ;
@@ -110,36 +108,90 @@ else $rec = 1;
 		     $reg10 = $row['reg10'] ;
 		     $reg11 = $row['reg11'] ;
 		     $reg12 = $row['reg12'] ;
+			
 			 
-		     echo "<form action=updateVotes.php method = post>";
+		 
+   		     echo "<form action=updateVotes.php method = post>";
 		     echo "<table width = 70% cellspacing = 2 cellpadding = 2>";
-			  echo "<tr><td align=right>Candidate ID No. <td><input type = text name = idNo value = $idNo readonly size=8>";
+			 echo "<tr><td align=right>Candidate ID No. <td><input type = text name = idNo value = $idNo readonly size=8>";
 			 echo "<tr><td align=right>Candidate Name <td><input type = text name = name value = $name readonly size=8>";
 			 echo "<tr><td align=right>Political Party <td><input type = text name = party value = $party readonly size=8>";
 		     echo "<tr><td colspan = 2 align=center><br><Br>Votes Received";
              echo "<tr><td colspan = 2><hr>";
-			 echo "<tr><td align=right>Region NCR <td><input type = text name = ncr value = $ncr size=8>";
-			 echo "<tr><td align=right>Region I <td><input type = text name = reg1 value = $reg1 size=8>";
-			 echo "<tr><td align=right>Region II <td><input type = text name = reg2 value = $reg2 size=8 >";
-			 echo "<tr><td align=right>Region III <td><input type = text name = reg3 value = $reg3 size=8>";
-			 echo "<tr><td align=right>Current Region IV <td><input type = text name = reg4 value = $reg4 size=8>";
-			 echo "<tr><td align=right>Region V <td><input type = text name = reg5 value = $reg5 size=8>";
-			 echo "<tr><td align=right>Current Region VI <td><input type = text name = reg6 value = $reg6 size=8>";
-			 echo "<tr><td align=right>Region VII  <td><input type = text name = reg7 value = $reg7 size=8>";
-			 echo "<tr><td align=right>Region VIII <td><input type = text name = reg8 value = $reg8 size=8>";
-			 echo "<tr><td align=right>Region IX <td><input type = text name = reg9 value = $reg9 size=8>";
-			 echo "<tr><td align=right>Region X <td><input type = text name = reg10 value = $reg10 size=8>";
-			 echo "<tr><td align=right>Region XI <td><input type = text name = reg11 value = $reg11 size=8>";
-			 echo "<tr><td align=right>Region XII <td><input type = text name = reg12 value = $reg12 size=8>";
+			 echo "<tr><td align=right>Region NCR <td><input type = text name = ncr value = $ncr size=8 readonly><input type = text name = ncrx>";
+			 echo "<tr><td align=right>Region I <td><input type = text name = reg1 value = $reg1 size=8 readonly><input type = text name = reg1x>";
+			 echo "<tr><td align=right>Region II <td><input type = text name = reg2 value = $reg2 size=8 readonly><input type = text name = reg2x>";
+			 echo "<tr><td align=right>Region III <td><input type = text name = reg3 value = $reg3 size=8 readonly><input type = text name = reg3x>";
+			 echo "<tr><td align=right>Current Region IV <td><input type = text name = reg4 value = $reg4 size=8 readonly><input type = text name = reg4x>";
+			 echo "<tr><td align=right>Region V <td><input type = text name = reg5 value = $reg5 size=8 readonly><input type = text name = reg5x>";
+			 echo "<tr><td align=right>Current Region VI <td><input type = text name = reg6 value = $reg6 size=8 readonly><input type = text name = reg6x>";
+			 echo "<tr><td align=right>Region VII  <td><input type = text name = reg7 value = $reg7 size=8 readonly><input type = text name = reg7x>";
+			 echo "<tr><td align=right>Region VIII <td><input type = text name = reg8 value = $reg8 size=8 readonly><input type = text name = reg8x>";
+			 echo "<tr><td align=right>Region IX <td><input type = text name = reg9 value = $reg9 size=8 readonly><input type = text name = reg9x>";
+			 echo "<tr><td align=right>Region X <td><input type = text name = reg10 value = $reg10 size=8 readonly><input type = text name = reg10x>";
+			 echo "<tr><td align=right>Region XI <td><input type = text name = reg11 value = $reg11 size=8 readonly><input type = text name = reg11x>";
+			 echo "<tr><td align=right>Region XII <td><input type = text name = reg12 value = $reg12 size=8 readonly><input type = text name = reg12x>";
 			 echo "<tr><td align=right><input type=submit  value = 'Update Tally' name = cmd><input type=submit  value = 'New' name = cmd>";
 		     echo "</form>";
         }   
     }	
 //  Codes that will be called when the Save button is clicked during Edit operation
     if ($cmd == 'Update Tally') { 
-	    $add = $data + $input;
 	    $idNo = $_POST['idNo'] ;
 	    $name = $_POST['name'] ;
+		$party = $_POST['party'] ;
+		$sum =0;
+		$sum1 =0;
+		$sum2 =0;
+		$sum3 =0;
+		$sum4 =0;
+		$sum5 =0;
+		$sum6 =0;
+		$sum7 =0;
+		$sum8 =0;
+		$sum9 =0;
+		$sum10 =0;
+		$sum11 =0;
+		$sum12 =0;
+		$ncrx = $_POST['ncrx'] ;
+         $reg1x = $_POST['reg1x'] ;
+				$reg2x = $_POST['reg2x'] ;
+				$reg3x = $_POST['reg3x'] ;
+				$reg4x = $_POST['reg4x'] ;
+   		     $reg5x = $_POST['reg5x'] ;
+   		     $reg6x = $_POST['reg6x'] ;
+		     $reg7x = $_POST['reg7x'] ;
+		     $reg8x = $_POST['reg8x'] ;
+		     $reg9x = $_POST['reg9x'] ;
+		     $reg10x = $_POST['reg10x'] ;
+		     $reg11x = $_POST['reg11x'] ;
+		     $reg12x = $_POST['reg12x'] ;
+			 $ncr = $_POST['ncr'] ;
+         $reg1 = $_POST['reg1'] ;
+				$reg2 = $_POST['reg2'] ;
+				$reg3 = $_POST['reg3'] ;
+				$reg4 = $_POST['reg4'] ;
+   		     $reg5 = $_POST['reg5'] ;
+   		     $reg6 = $_POST['reg6'] ;
+		     $reg7 = $_POST['reg7'] ;
+		     $reg8 = $_POST['reg8'] ;
+		     $reg9 = $_POST['reg9'] ;
+		     $reg10 = $_POST['reg10'] ;
+		     $reg11 = $_POST['reg11'] ;
+		     $reg12 = $_POST['reg12'] ;
+		$sum =$ncr+$ncrx;
+		$sum1 =$reg1+$reg1x;
+		$sum2 =$reg2+$reg2x;
+		$sum3 =$reg3+$reg3x;
+		$sum4 =$reg4+$reg4x;
+		$sum5 =$reg5+$reg5x;
+		$sum6 =$reg6+$reg6x;
+		$sum7 =$reg7+$reg7x;
+		$sum8 =$reg8+$reg8x;
+		$sum9 =$reg9+$reg9x;
+		$sum10 =$reg10+$reg10x;
+		$sum11 =$reg11+$reg11x;
+		$sum12 =$reg12+$reg12x;
 	     $ncr = $_POST['ncr'] ;
          $reg1 = $_POST['reg1'] ;
 				$reg2 = $_POST['reg2'] ;
@@ -153,6 +205,92 @@ else $rec = 1;
 		     $reg10 = $_POST['reg10'] ;
 		     $reg11 = $_POST['reg11'] ;
 		     $reg12 = $_POST['reg12'] ;
+			
+         $sql = "Update votes
+	                 Set 
+					 idNo = '$idNo',
+					 name = '$name',
+							ncr = '$sum',
+							reg1 = '$sum1',
+							reg2 = '$sum2',
+							reg3 = '$sum3',
+							reg4 = '$sum4',
+							reg5 = '$sum5',
+							reg6 = '$sum6',
+							reg7 = '$sum7',
+							reg8 = '$sum8',
+							reg9 = '$sum9',
+							reg10 = '$sum10',
+							reg11 = '$sum11',
+							reg12 = '$sum12'
+							
+						   
+				     where recID = '$rec'";
+	    $result =  mysqli_query($link, $sql);
+	    if ($result) 
+		      $mess = "Record successfully updated !";
+	    else
+		      $mess = "Unable to update record !";
+	    echo "<form action=updateVotes.php method = post>";
+        echo "<br><table align = center>";
+        echo "<tr><td align = center>$mess";
+	    echo "<tr><th><input type = submit value = 'Click here to refresh page'></form>";
+        mysqli_close($link);
+   }
+
+if ($cmd == 'Insert' ) { 
+$sql = "Select *  from votes where recID = $rec";
+	     $result =  mysqli_query($link, $sql);
+	     if ($result) {
+		     $row = mysqli_fetch_array($result);
+			 $idNo = $row['idNo'] ;
+			   $name = $row['name'] ;
+			   $party = $row['party'] ;
+       echo "<form action=updateVotes.php method = post>";
+		     echo "<table width = 70% cellspacing = 2 cellpadding = 2>";
+			 echo "<tr><td align=right>Candidate ID No. <td><input type = text name = idNo value = $idNo readonly size=8>";
+			 echo "<tr><td align=right>Candidate Name <td><input type = text name = name value = $name readonly size=8>";
+			 echo "<tr><td align=right>Political Party <td><input type = text name = party value = $party readonly size=8>";
+		 }
+		     echo "<tr><td colspan = 2 align=center><br><Br>Votes Received";
+             echo "<tr><td colspan = 2><hr>";
+			 echo "<tr><td align=right>Region NCR <td><input type = text name = ncr >";
+			 echo "<tr><td align=right>Region I <td><input type = text name = reg1 >";
+			 echo "<tr><td align=right>Region II <td><input type = text name = reg2 >";
+			 echo "<tr><td align=right>Region III <td><input type = text name = reg3 >";
+			 echo "<tr><td align=right>Current Region IV <td><input type = text name = reg4 >";
+			 echo "<tr><td align=right>Region V <td><input type = text name = reg5 >";
+			 echo "<tr><td align=right>Current Region VI <td><input type = text name = reg6 >";
+			 echo "<tr><td align=right>Region VII  <td><input type = text name = reg7> ";
+			 echo "<tr><td align=right>Region VIII <td><input type = text name = reg8 >";
+			 echo "<tr><td align=right>Region IX <td><input type = text name = reg9 >";
+			 echo "<tr><td align=right>Region X <td><input type = text name = reg10 >";
+			 echo "<tr><td align=right>Region XI <td><input type = text name = reg11 >";
+			 echo "<tr><td align=right>Region XII <td><input type = text name = reg12 >";
+			 echo "<tr><td align=right><input type=submit  value = 'Create' name = cmd><input type=submit  value = 'New' name = cmd>";
+		     echo "</form>";
+   }
+ //
+ // Codes to add record if user clicked the 'Create' button during Insert 
+ // 
+   if ($cmd == 'Create') { 
+      $idNo = $_POST['idNo'] ;
+	    $name = $_POST['name'] ;
+		$party = $_POST['party'] ;
+	     $ncr = $_POST['ncr'] ;
+         $reg1 = $_POST['reg1'] ;
+				$reg2 = $_POST['reg2'] ;
+				$reg3 = $_POST['reg3'] ;
+				$reg4 = $_POST['reg4'] ;
+   		     $reg5 = $_POST['reg5'] ;
+   		     $reg6 = $_POST['reg6'] ;
+		     $reg7 = $_POST['reg7'] ;
+		     $reg8 = $_POST['reg8'] ;
+		     $reg9 = $_POST['reg9'] ;
+		     $reg10 = $_POST['reg10'] ;
+		     $reg11 = $_POST['reg11'] ;
+		     $reg12 = $_POST['reg12'] ;
+			
          $sql = "Update votes
 	                 Set 
 					 idNo = '$idNo',
@@ -184,8 +322,6 @@ else $rec = 1;
 	    echo "<tr><th><input type = submit value = 'Click here to refresh page'></form>";
         mysqli_close($link);
    }
-
-
    
 
 ?>
