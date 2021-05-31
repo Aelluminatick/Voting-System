@@ -69,7 +69,7 @@ else $rec = 1;
       else {
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
       }
-      echo "<form action=updateVotes.php method = post>";
+      echo "<form action=n2.php method = post>";
 	  echo "<br><table align = center width = 85% cellspacing = 2 cellpadding = 2>";
       echo "<tr><td align = right>Select to Update  :  $sel ";
       echo "
@@ -88,7 +88,7 @@ else $rec = 1;
 //  Block of  codes that will be called when the Edit button is clicked
 // 
     if ($cmd == 'Update' ) { 
-         $sql = "Select *  from votes where recID = $rec";
+         $sql = "Select * from votes where recID = $rec";
 	     $result =  mysqli_query($link, $sql);
 	     if ($result) {
 		     $row = mysqli_fetch_array($result);
@@ -111,7 +111,7 @@ else $rec = 1;
 			
 			 
 		 
-   		     echo "<form action=updateVotes.php method = post>";
+   		     echo "<form action=n2.php method = post>";
 		     echo "<table width = 70% cellspacing = 2 cellpadding = 2>";
 			 echo "<tr><td align=right>Candidate ID No. <td><input type = text name = idNo value = $idNo readonly size=8>";
 			 echo "<tr><td align=right>Candidate Name <td><input type = text name = name value = $name readonly size=8>";
@@ -179,19 +179,19 @@ else $rec = 1;
 		     $reg10 = $_POST['reg10'] ;
 		     $reg11 = $_POST['reg11'] ;
 		     $reg12 = $_POST['reg12'] ;
-		$sum =$ncr+$ncrx;
-		$sum1 =$reg1+$reg1x;
-		$sum2 =$reg2+$reg2x;
-		$sum3 =$reg3+$reg3x;
-		$sum4 =$reg4+$reg4x;
-		$sum5 =$reg5+$reg5x;
-		$sum6 =$reg6+$reg6x;
-		$sum7 =$reg7+$reg7x;
-		$sum8 =$reg8+$reg8x;
-		$sum9 =$reg9+$reg9x;
-		$sum10 =$reg10+$reg10x;
-		$sum11 =$reg11+$reg11x;
-		$sum12 =$reg12+$reg12x;
+		$sum = (int)$ncr+(int)$ncrx;
+		$sum1 =(int)$reg1+(int)$reg1x;
+		$sum2 =(int)$reg2+(int)$reg2x;
+		$sum3 =(int)$reg3+(int)$reg3x;
+		$sum4 =(int)$reg4+(int)$reg4x;
+		$sum5 =(int)$reg5+(int)$reg5x;
+		$sum6 =(int)$reg6+(int)$reg6x;
+		$sum7 =(int)$reg7+(int)$reg7x;
+		$sum8 =(int)$reg8+(int)$reg8x;
+		$sum9 =(int)$reg9+(int)$reg9x;
+		$sum10 =(int)$reg10+(int)$reg10x;
+		$sum11 =(int)$reg11+(int)$reg11x;
+		$sum12 =(int)$reg12+(int)$reg12x;
 	     $ncr = $_POST['ncr'] ;
          $reg1 = $_POST['reg1'] ;
 				$reg2 = $_POST['reg2'] ;
@@ -231,7 +231,7 @@ else $rec = 1;
 		      $mess = "Record successfully updated !";
 	    else
 		      $mess = "Unable to update record !";
-	    echo "<form action=updateVotes.php method = post>";
+	    echo "<form action=n2.php method = post>";
         echo "<br><table align = center>";
         echo "<tr><td align = center>$mess";
 	    echo "<tr><th><input type = submit value = 'Click here to refresh page'></form>";
@@ -239,14 +239,14 @@ else $rec = 1;
    }
 
 if ($cmd == 'Insert' ) { 
-$sql = "Select *  from votes where recID = $rec";
+$sql = "Select * from votes where recID = $rec";
 	     $result =  mysqli_query($link, $sql);
 	     if ($result) {
 		     $row = mysqli_fetch_array($result);
 			 $idNo = $row['idNo'] ;
 			   $name = $row['name'] ;
 			   $party = $row['party'] ;
-       echo "<form action=updateVotes.php method = post>";
+       echo "<form action=n2.php method = post>";
 		     echo "<table width = 70% cellspacing = 2 cellpadding = 2>";
 			 echo "<tr><td align=right>Candidate ID No. <td><input type = text name = idNo value = $idNo readonly size=8>";
 			 echo "<tr><td align=right>Candidate Name <td><input type = text name = name value = $name readonly size=8>";
@@ -316,7 +316,7 @@ $sql = "Select *  from votes where recID = $rec";
 		      $mess = "Record successfully updated !";
 	    else
 		      $mess = "Unable to update record !";
-	    echo "<form action=updateVotes.php method = post>";
+	    echo "<form action=n2.php method = post>";
         echo "<br><table align = center>";
         echo "<tr><td align = center>$mess";
 	    echo "<tr><th><input type = submit value = 'Click here to refresh page'></form>";
